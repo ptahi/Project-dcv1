@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="payment_method_page" name="Payment Method Page">
+        <t t-call="om_sales.website_layout">
+
+            <div class="container mt-5 mb-5">
+
+                <h2 class="text-center mb-4">
+                    Chọn phương thức thanh toán
+                </h2>
+
+                <!-- ========================= -->
+                <!-- THÔNG TIN ĐƠN HÀNG -->
+                <!-- ========================= -->
+                <t t-if="order">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <p>
+                                <strong>Mã đơn hàng:</strong>
+                                <t t-esc="order.name"/>
+                            </p>
+                            <p>
+                                <strong>Tổng tiền:</strong>
+                                <span class="text-danger fw-bold">
+                                    <t t-esc="order.total_price"/> VND
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </t>
+
+                <t t-if="not order">
+                    <div class="alert alert-info text-center mb-4">
+                        <i class="fa fa-info-circle"></i>
+                        Vui lòng chọn phương thức thanh toán để hoàn tất đơn hàng
+                    </div>
+                </t>
+
+                <!-- ========================= -->
+                <!-- PAYMENT METHODS -->
+                <!-- ========================= -->
+                <div class="row">
+
+                    <!-- COD -->
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body text-center">
+                                <h4 class="mb-3">🚚 Thanh toán khi nhận hàng (COD)</h4>
+                                <p class="text-muted">Thanh toán tiền mặt cho shipper</p>
+
+                                <a href="/order/cod"
+                                   class="btn btn-primary btn-lg">
+                                    Chọn COD
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- QR -->
+                    <!-- QR -->
+<div class="col-md-6 mb-3">
+    <div class="card h-100 shadow-sm border-success">
+        <div class="card-body text-center">
+            <h4 class="mb-3 text-success">📱 Thanh toán bằng mã QR</h4>
+            <p class="text-muted">Quét mã QR để thanh toán</p>
+
+            <a href="/order/qr"
+               class="btn btn-success btn-lg">
+                Thanh toán QR
+            </a>
+        </div>
+    </div>
+</div>
+
+
+                </div>
+
+            </div>
+
+        </t>
+    </template>
+</odoo>

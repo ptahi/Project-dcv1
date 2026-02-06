@@ -1,0 +1,35 @@
+<odoo>
+    <template id="compare_toast_template" inherit_id="website.layout">
+        <xpath expr="//body" position="inside">
+
+            <!-- TOAST CONTAINER -->
+            <div class="toast-container position-fixed top-0 end-0 p-3"
+                 style="z-index: 2000">
+
+                <div id="compareToast"
+                     class="toast"
+                     role="alert"
+                     aria-live="assertive"
+                     aria-atomic="true"
+                     data-bs-delay="2500">
+
+                    <div class="toast-header">
+                        <strong class="me-auto">Đã thêm vào so sánh</strong>
+                        <button type="button"
+                                class="btn-close"
+                                data-bs-dismiss="toast"></button>
+                    </div>
+
+                    <div class="toast-body d-flex align-items-center">
+                        <img id="compare_toast_image"
+                             src=""
+                             style="width:48px;height:48px;object-fit:contain"
+                             class="me-2"/>
+                        <span id="compare_toast_name"></span>
+                    </div>
+                </div>
+
+            </div>
+        </xpath>
+    </template>
+</odoo>

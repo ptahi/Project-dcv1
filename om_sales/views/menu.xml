@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <menuitem
+        id="menu_sm_root"
+        name="Store"
+        sequence="10"/>
+    <menuitem
+        id="menu_sm_product"
+        name="Sản phẩm"
+        parent="menu_sm_root"
+        action="action_sm_sanpham"
+        sequence="20"/>
+    <menuitem
+        id="menu_sm_khachhang"
+        name="Khách hàng"
+        parent="menu_sm_root"
+        sequence="20"/>
+    <menuitem
+        id="menu_sm_customer"
+        name="Khách hàng"
+        parent="menu_sm_khachhang"
+        action="action_sm_customer"
+        sequence="20"/>
+        <menuitem
+        id="menu_sm_customer_readonly"
+        name="Xem khach hang"
+        parent="menu_sm_khachhang"
+        action="action_sm_customer_readonly"
+        sequence="20"/>
+<!--        <menuitem-->
+<!--        id="menu_sm_sale_order"-->
+<!--        name="Đơn hàng"-->
+<!--        parent="menu_sm_root"-->
+<!--        action="action_sm_donhang"-->
+<!--        sequence="30"/>-->
+
+        <menuitem
+        id="menu_sm_product_brand_dell"
+        name="Dell"
+        parent="menu_sm_product"
+        action="action_sm_sanpham_dell"
+        sequence="10"/>
+            <menuitem
+        id="menu_sm_product_brand_asus"
+        name="Asus"
+        parent="menu_sm_product"
+        action="action_sm_sanpham_asus"
+        sequence="20"/>
+            <menuitem
+        id="menu_sm_product_brand_lenovo"
+        name="Lenovo"
+        parent="menu_sm_product"
+        action="action_sm_sanpham_lenovo"
+        sequence="30"/>
+    <menuitem
+        id="menu_sm_shopping_cart"
+        name="Đơn hàng "
+        parent="menu_sm_root"
+        action="action_sm_shopping_cart"
+        sequence="30"/>
+        <menuitem
+        id="menu_sm_contact"
+        name="Liên hệ"
+        parent="menu_sm_root"
+        action="action_sm_contact"
+        sequence="20"/>
+
+</odoo>

@@ -1,0 +1,170 @@
+/* ============================================================
+   TỔNG THỂ LAYOUT
+   ============================================================ */
+.modern-laptop-shop {
+    font-family: 'Segoe UI', Roboto, Arial, sans-serif !important;
+    background-color: #f8f9fa;
+}
+
+/* Header & Nav */
+.modern-laptop-shop .modern-header {
+    background-color: #fff;
+}
+
+.modern-laptop-shop .navbar-brand {
+    color: #0d6efd !important;
+    letter-spacing: -1px;
+}
+
+.modern-laptop-shop .nav-link {
+    font-weight: 500;
+    color: #444 !important;
+    padding: 0.5rem 1rem !important;
+    transition: 0.3s;
+}
+
+.modern-laptop-shop .nav-link:hover {
+    color: #0d6efd !important;
+}
+
+/* ============================================================
+   BANNER (HERO SECTION)
+   ============================================================ */
+.modern-laptop-shop .hero-banner {
+    background: linear-gradient(135deg, #0d6efd 0%, #0045a5 100%) !important;
+    padding: 80px 0;
+    margin-bottom: 40px;
+}
+
+/* ============================================================
+   BỘ LỌC (FILTER SECTION)
+   ============================================================ */
+.modern-laptop-shop .filter-section {
+    background: #fff !important;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.modern-laptop-shop .filter-section h5 {
+    color: #333;
+    font-weight: 700;
+}
+
+/* Nút lọc */
+.modern-laptop-shop .btn-outline-primary {
+    border-radius: 20px;
+    margin: 2px;
+    border-color: #0d6efd;
+    color: #0d6efd;
+}
+
+.modern-laptop-shop .btn-outline-primary.active {
+    background-color: #0d6efd !important;
+    color: #fff !important;
+    box-shadow: 0 4px 10px rgba(13, 110, 253, 0.3);
+}
+
+/* ============================================================
+   CARD SẢN PHẨM (SHOP PAGE)
+   ============================================================ */
+.modern-laptop-shop .product-card {
+    background: #fff;
+    border-radius: 15px !important;
+    border: 1px solid #efefef !important;
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1) !important;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.modern-laptop-shop .product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1) !important;
+    border-color: #0d6efd !important;
+}
+
+/* Vùng chứa ảnh laptop */
+.modern-laptop-shop .product-image {
+    background-color: #fbfbfb;
+    padding: 40px 20px;
+    text-align: center;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.modern-laptop-shop .product-info {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.modern-laptop-shop .product-name a {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #222 !important;
+    text-decoration: none;
+}
+
+.modern-laptop-shop .product-price {
+    margin-top: 10px;
+}
+
+.modern-laptop-shop .product-price .text-danger {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+.zalo-chat {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  z-index: 9999;
+}
+
+/* ============================================================
+   TRANG CHI TIẾT SẢN PHẨM
+   ============================================================ */
+.modern-laptop-shop .product-detail-image {
+    border: 1px solid #eee;
+    background: #fff;
+    border-radius: 20px;
+}
+
+.modern-laptop-shop .price-box {
+    border-left: 5px solid #d9534f;
+    padding-left: 20px;
+}
+
+.modern-laptop-shop .product-title {
+    font-weight: 700;
+    color: #222;
+}
+
+/* ============================================================
+   TIỆN ÍCH (SUCCESS, FOOTER,...)
+   ============================================================ */
+.modern-laptop-shop .success-circle {
+    width: 80px;
+    height: 80px;
+    background: #28a745;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.modern-laptop-shop .modern-footer {
+    background-color: #1a1a1a !important;
+}
+
+.modern-laptop-shop .footer-links a {
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.modern-laptop-shop .footer-links a:hover {
+    color: #fff !important;
+    padding-left: 5px;
+}

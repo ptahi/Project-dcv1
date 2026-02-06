@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ========================= -->
+    <!-- TREE VIEW (SAFE) -->
+    <!-- ========================= -->
+    <record id="view_sm_shopping_cart_tree" model="ir.ui.view">
+        <field name="name">sm.shopping.cart.tree</field>
+        <field name="model">sm.shopping.cart</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="customer_name"/>
+                <field name="customer_phone"/>
+                <field name="date_order"/>
+                <field name="total_price" sum="Tổng cộng"/>
+                <field name="state" widget="badge"/>
+            </tree>
+        </field>
+    </record>
+
+
+
+
+    <!-- ========================= -->
+    <!-- FORM VIEW -->
+    <!-- ========================= -->
+    <record id="view_sm_shopping_cart_form" model="ir.ui.view">
+        <field name="name">sm.shopping.cart.form</field>
+        <field name="model">sm.shopping.cart</field>
+        <field name="arch" type="xml">
+            <form>
+
+                <header>
+                    <button name="action_print_order"
+                            string="In đơn hàng"
+                            type="object"
+                            class="btn-secondary"
+                            icon="fa-print"/>
+
+                    <button name="action_awaiting_confirmation"
+                            string="Chờ xác nhận"
+                            type="object"
+                            class="oe_highlight"
+                            invisible="state != 'draft'"/>
+
+                    <button name="action_confirm"
+                            string="Xác nhận"
+                            type="object"
+                            class="oe_highlight"
+                            invisible="state != 'awaiting_confirmation'"/>
+
+                    <button name="action_shipping"
+                            string="Giao hàng"
+                            type="object"
+                            class="oe_highlight"
+                            invisible="state != 'confirmed'"/>
+
+                    <button name="action_done"
+                            string="Hoàn thành"
+                            type="object"
+                            class="oe_highlight"
+                            invisible="state != 'shipping'"/>
+
+                    <button name="action_cancel"
+                            string="Hủy đơn"
+                            type="object"
+                            invisible="state in ['done','cancel']"/>
+
+                    <button name="action_draft"
+                            string="Thiết lập về nháp"
+                            type="object"
+                            invisible="state != 'cancel'"/>
+
+                    <field name="state"
+                           widget="statusbar"
+                           statusbar_visible="draft,awaiting_confirmation,confirmed,shipping,done"/>
+                </header>
+
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+
+                    <group string="Thông tin khách hàng">
+                        <group>
+                            <field name="customer_name"/>
+                            <field name="customer_phone" widget="phone"/>
+                        </group>
+                        <group>
+                            <field name="customer_email" widget="email"/>
+                            <field name="date_order"/>
+                        </group>
+                    </group>
+
+                    <group string="Địa chỉ nhận hàng">
+                        <field name="customer_address"/>
+                    </group>
+
+                    <notebook>
+                        <page string="Sản phẩm đã chọn">
+                            <field name="cart_line_ids">
+                                <tree editable="bottom">
+                                    <field name="product_id"/>
+                                    <field name="quantity"/>
+                                    <field name="price_unit"/>
+                                    <field name="price_subtotal" readonly="1"/>
+                                </tree>
+                            </field>
+
+                            <group class="oe_subtotal_footer oe_right">
+                                <field name="total_price"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids"/>
+                </div>
+
+            </form>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- ACTION -->
+    <!-- ========================= -->
+    <record id="action_sm_shopping_cart" model="ir.actions.act_window">
+        <field name="name">Đơn hàng</field>
+        <field name="res_model">sm.shopping.cart</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- MENU -->
+    <!-- ========================= -->
+    <menuitem id="menu_sm_shopping_root"
+              name="Quản lý bán hàng"
+              sequence="10"/>
+
+    <menuitem id="menu_sm_shopping_cart"
+              name="Đơn hàng"
+              parent="menu_sm_shopping_root"
+              action="action_sm_shopping_cart"
+              sequence="10"/>
+
+</odoo>

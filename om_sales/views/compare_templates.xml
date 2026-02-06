@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- MODAL POPUP SO SÁNH -->
+    <template id="compare_modal" name="Compare Modal">
+        <div class="modal fade" id="compareModal" tabindex="-1" aria-labelledby="compareModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="compareModalLabel">So sánh sản phẩm (tối đa 2 laptop)</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="compare_modal_items" class="row g-3"></div>
+                        <p id="compare_modal_empty" class="text-center text-muted my-5" style="display:none;">
+                            Chưa có sản phẩm nào trong danh sách so sánh.
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Đóng</button>
+                        <a id="compare_modal_btn" href="/compare" class="btn btn-danger" style="display:none;">
+                            So sánh chi tiết ngay
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- TRANG SO SÁNH CHI TIẾT (side-by-side) -->
+    <template id="compare_page" name="Compare Products Page">
+        <t t-call="om_sales.website_layout">
+            <div class="container my-5">
+                <h1 class="text-center mb-5">So sánh laptop</h1>
+
+                <t t-if="products and len(products) &gt; 0">
+                    <div class="table-responsive">
+                        <table class="table table-bordered compare-table text-center align-middle">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th style="width: 18%;">Thuộc tính</th>
+                                    <t t-foreach="products" t-as="product">
+                                        <th>
+                                            <img t-att-src="'/web/image/sm.sanpham/%s/image_1920' % product.id"
+                                                 style="max-height: 160px; object-fit: contain;"
+                                                 alt="Ảnh sản phẩm"/>
+                                            <h5 class="mt-3 mb-2" t-esc="product.name"/>
+                                            <p class="text-danger fw-bold fs-5">
+                                                <t t-esc="'{:,} ₫'.format(int(product.price))"/>
+                                            </p>
+                                            <a t-attf-href="/product/#{product.id}" class="btn btn-sm btn-outline-primary mt-2">
+                                                Xem chi tiết
+                                            </a>
+                                        </th>
+                                    </t>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Hãng sản xuất</td>
+                                    <t t-foreach="products" t-as="product">
+                                        <td t-esc="product.brand_id.name or 'Chưa cập nhật'"/>
+                                    </t>
+                                </tr>
+                                <tr>
+                                    <td>Mô tả ngắn</td>
+                                    <t t-foreach="products" t-as="product">
+                                        <td t-esc="product.description_sale or 'Đang cập nhật...'"/>
+                                    </t>
+                                </tr>
+                                <!-- Bạn có thể thêm row khác sau nếu bổ sung fields: CPU, RAM, SSD, màn hình... -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="text-center mt-5">
+                        <a href="/shop" class="btn btn-primary btn-lg px-5">Tiếp tục mua sắm</a>
+                    </div>
+                </t>
+
+                <t t-else="">
+                    <div class="alert alert-info text-center py-5">
+                        <h4>Chưa có sản phẩm nào để so sánh</h4>
+                        <p class="lead">Hãy thêm ít nhất 2 sản phẩm để xem bảng so sánh chi tiết.</p>
+                        <a href="/shop" class="btn btn-primary mt-3">Xem tất cả sản phẩm</a>
+                    </div>
+                </t>
+            </div>
+        </t>
+    </template>
+
+    <!-- Nếu bạn vẫn muốn giữ compare_bar fixed bottom, thêm vào đây hoặc giữ nguyên file cũ -->
+
+</odoo>
